@@ -39,6 +39,7 @@ cat $validators2ImportFile | while read v; do
         --chain-id $chainId --keyring-backend $KEYRING_BACKEND \
         --moniker="$valName" \
         --from=$valName \
+        --pubkey=$(allorad --home=$APP_HOME keys --keyring-backend=$KEYRING_BACKEND show $valNamez --pubkey) \
         --output-document $GENTXDIR/$valName.json
 
     i=$((i+1));
