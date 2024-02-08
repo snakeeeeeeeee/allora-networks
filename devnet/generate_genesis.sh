@@ -6,6 +6,8 @@ APP_HOME="/data/tmp"
 KEYRING_BACKEND=test
 DENOM="uallo"
 
+ALLORAD="/usr/local/bin/allorad"
+
 mkdir -p $APP_HOME
 #! If you run docker with -u `...` it need a writable HOME
 export HOME=$APP_HOME
@@ -33,7 +35,11 @@ cat $validators2ImportFile | while read v; do
         "validator$i" $v
 
     allorad --home=$APP_HOME genesis add-genesis-account $valName ${fundsValidators}${DENOM} --keyring-backend $KEYRING_BACKEND
-    allorad --home=$APP_HOME genesis gentx $valName ${fundsValidators}${DENOM} --chain-id $chainId --keyring-backend $KEYRING_BACKEND --output-document $GENTXDIR/$valName.json
+    allorad --home=$APP_HOME genesis gentx $valName ${fundsValidators}${DENOM} \
+        --chain-id $chainId --keyring-backend $KEYRING_BACKEND \
+        --moniker="$valName" \
+        --from=$valName \
+        --output-document $GENTXDIR/$valName.json
 
     i=$((i+1));
 done
