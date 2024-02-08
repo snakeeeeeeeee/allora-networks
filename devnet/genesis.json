@@ -1,9 +1,9 @@
 {
-  "app_name": "uptd",
-  "app_version": "main-6bf0c37136d9e572fbb448222f84bac01f4ffa9c",
-  "genesis_time": "2024-02-01T23:08:33.298270575Z",
-  "chain_id": "demo",
-  "initial_height": "1",
+  "app_name": "allorad",
+  "app_version": "main-24a88913f37ef90fa2cfd85d08b9bc33e69eba42",
+  "genesis_time": "2024-02-08T21:52:53.574490569Z",
+  "chain_id": "devnet",
+  "initial_height": 1,
   "app_hash": null,
   "app_state": {
     "auth": {
@@ -17,37 +17,16 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "upt1m4ssnux4kh5pfmjzzkpde0hvxfg0d37mjtumjh",
+          "address": "allo1m4ssnux4kh5pfmjzzkpde0hvxfg0d37mla0pdf",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "upt1m8m7u5wygh8f0m55m7aj957yts44fsqd04hgyx",
+          "address": "allo1m8m7u5wygh8f0m55m7aj957yts44fsqdzryjmc",
           "pub_key": null,
           "account_number": "1",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "upt1wg289gh4tv3en5g49pex433hwnsld6yzzhppgv",
-          "pub_key": null,
-          "account_number": "2",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "upt182rv3s5jvn5v7lxaz3elpwzgyl7zqvqe727ee5",
-          "pub_key": null,
-          "account_number": "3",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "upt1acgw83473tp35wnxutpvhwadzlgull0vvf7stj",
-          "pub_key": null,
-          "account_number": "4",
           "sequence": "0"
         }
       ]
@@ -59,61 +38,39 @@
       },
       "balances": [
         {
-          "address": "upt182rv3s5jvn5v7lxaz3elpwzgyl7zqvqe727ee5",
+          "address": "allo1m8m7u5wygh8f0m55m7aj957yts44fsqdzryjmc",
           "coins": [
             {
-              "denom": "upt",
-              "amount": "1337"
+              "denom": "uallo",
+              "amount": "1000000"
             }
           ]
         },
         {
-          "address": "upt1wg289gh4tv3en5g49pex433hwnsld6yzzhppgv",
+          "address": "allo1m4ssnux4kh5pfmjzzkpde0hvxfg0d37mla0pdf",
           "coins": [
             {
-              "denom": "upt",
-              "amount": "6969"
-            }
-          ]
-        },
-        {
-          "address": "upt1m8m7u5wygh8f0m55m7aj957yts44fsqd04hgyx",
-          "coins": [
-            {
-              "denom": "upt",
-              "amount": "1000"
-            }
-          ]
-        },
-        {
-          "address": "upt1m4ssnux4kh5pfmjzzkpde0hvxfg0d37mjtumjh",
-          "coins": [
-            {
-              "denom": "upt",
-              "amount": "10000000"
-            }
-          ]
-        },
-        {
-          "address": "upt1acgw83473tp35wnxutpvhwadzlgull0vvf7stj",
-          "coins": [
-            {
-              "denom": "upt",
-              "amount": "4200"
+              "denom": "uallo",
+              "amount": "1000000"
             }
           ]
         }
       ],
       "supply": [
         {
-          "denom": "upt",
-          "amount": "10013506"
+          "denom": "uallo",
+          "amount": "2000000"
         }
       ],
       "denom_metadata": [],
       "send_enabled": []
     },
     "consensus": null,
+    "emissions": {
+      "params": {
+        "version": "0.0.1"
+      }
+    },
     "genutil": {
       "gen_txs": [
         {
@@ -122,7 +79,7 @@
               {
                 "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
                 "description": {
-                  "moniker": "test",
+                  "moniker": "mymoniker",
                   "identity": "",
                   "website": "",
                   "security_contact": "",
@@ -135,18 +92,18 @@
                 },
                 "min_self_delegation": "1",
                 "delegator_address": "",
-                "validator_address": "uptvaloper1m4ssnux4kh5pfmjzzkpde0hvxfg0d37my2gq5t",
+                "validator_address": "allovaloper1m4ssnux4kh5pfmjzzkpde0hvxfg0d37mgefz39",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "fHYXUBADqRvvw7E6CmT5iks9lRPOQJXX1MbS76k37nM="
+                  "key": "7HGEk+XJ2LVxycwNkhK+Fvbfxky14XpmbXQ3lEjukX8="
                 },
                 "value": {
-                  "denom": "upt",
+                  "denom": "uallo",
                   "amount": "1000000"
                 }
               }
             ],
-            "memo": "37f28611cc614fcd7066ef2f7f94e1ab45f520d4@10.150.39.186:26656",
+            "memo": "7552200c3b0dacbfb93e3593934672a564f3c172@172.17.0.2:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -175,7 +132,69 @@
             "tip": null
           },
           "signatures": [
-            "7KAAO+GZ8sHJEZ466z+QhdJCfX5UG/N1kVdD8SAatHJDusosLm7SXy2/dzz4kYDjqKOkyQZ1Wo0faFyWV5AIMg=="
+            "SynMjRrBNImTD2jVpulUzxUwQlSVR0csL3PwnJwOqboDMAQS4MAft4J6ZKldFe7Zvd0dtoPS3y2Urpsv4BdpwQ=="
+          ]
+        },
+        {
+          "body": {
+            "messages": [
+              {
+                "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                "description": {
+                  "moniker": "mymoniker",
+                  "identity": "",
+                  "website": "",
+                  "security_contact": "",
+                  "details": ""
+                },
+                "commission": {
+                  "rate": "0.100000000000000000",
+                  "max_rate": "0.200000000000000000",
+                  "max_change_rate": "0.010000000000000000"
+                },
+                "min_self_delegation": "1",
+                "delegator_address": "",
+                "validator_address": "allovaloper1m8m7u5wygh8f0m55m7aj957yts44fsqd48z385",
+                "pubkey": {
+                  "@type": "/cosmos.crypto.ed25519.PubKey",
+                  "key": "7HGEk+XJ2LVxycwNkhK+Fvbfxky14XpmbXQ3lEjukX8="
+                },
+                "value": {
+                  "denom": "uallo",
+                  "amount": "1000000"
+                }
+              }
+            ],
+            "memo": "7552200c3b0dacbfb93e3593934672a564f3c172@172.17.0.2:26656",
+            "timeout_height": "0",
+            "extension_options": [],
+            "non_critical_extension_options": []
+          },
+          "auth_info": {
+            "signer_infos": [
+              {
+                "public_key": {
+                  "@type": "/cosmos.crypto.secp256k1.PubKey",
+                  "key": "A21cCN3d+jRlCdSKB/p8AaYJSmmfjNB9kflFjPA/4GwN"
+                },
+                "mode_info": {
+                  "single": {
+                    "mode": "SIGN_MODE_DIRECT"
+                  }
+                },
+                "sequence": "0"
+              }
+            ],
+            "fee": {
+              "amount": [],
+              "gas_limit": "200000",
+              "payer": "",
+              "granter": ""
+            },
+            "tip": null
+          },
+          "signatures": [
+            "XKEMHmt16nKqBVTD87Pz2c4gZW6ZyjV2HWvrb3mxrksgkZXzpnYmTl4u9PVz70WtTWCc9j0wx2v8KEO534q2MA=="
           ]
         }
       ]
@@ -186,7 +205,7 @@
         "annual_provisions": "0.000000000000000000"
       },
       "params": {
-        "mint_denom": "upt",
+        "mint_denom": "uallo",
         "inflation_rate_change": "0.130000000000000000",
         "inflation_max": "0.200000000000000000",
         "inflation_min": "0.070000000000000000",
@@ -201,7 +220,7 @@
         "max_validators": 100,
         "max_entries": 7,
         "historical_entries": 10000,
-        "bond_denom": "upt",
+        "bond_denom": "uallo",
         "min_commission_rate": "0.000000000000000000"
       },
       "last_total_power": "0",
@@ -211,11 +230,6 @@
       "unbonding_delegations": [],
       "redelegations": [],
       "exported": false
-    },
-    "upshot": {
-      "params": {
-        "version": "0.0.1"
-      }
     }
   },
   "consensus": {
