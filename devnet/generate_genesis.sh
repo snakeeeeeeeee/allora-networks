@@ -46,6 +46,9 @@ done
 
 allorad --home=$APP_HOME genesis collect-gentxs --gentx-dir $GENTXDIR
 
+# Add FAUCET accounts
+allorad --home=$APP_HOME genesis add-genesis-account allo1ey0fvvpx3y99g7s8n8k7ft74dh0zq6y7l3fnke 1000000000000${DENOM} --keyring-backend $KEYRING_BACKEND
+
 echo "The genesis is in $APP_HOME/config"
 
 

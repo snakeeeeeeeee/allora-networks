@@ -1,7 +1,7 @@
 {
   "app_name": "allorad",
   "app_version": "main-24a88913f37ef90fa2cfd85d08b9bc33e69eba42",
-  "genesis_time": "2024-02-09T00:30:36.78968734Z",
+  "genesis_time": "2024-02-09T04:03:12.064162801Z",
   "chain_id": "devnet",
   "initial_height": 1,
   "app_hash": null,
@@ -21,6 +21,13 @@
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "allo1ey0fvvpx3y99g7s8n8k7ft74dh0zq6y7l3fnke",
+          "pub_key": null,
+          "account_number": "1",
+          "sequence": "0"
         }
       ]
     },
@@ -30,6 +37,15 @@
         "default_send_enabled": true
       },
       "balances": [
+        {
+          "address": "allo1ey0fvvpx3y99g7s8n8k7ft74dh0zq6y7l3fnke",
+          "coins": [
+            {
+              "denom": "uallo",
+              "amount": "1000000000000"
+            }
+          ]
+        },
         {
           "address": "allo1m4ssnux4kh5pfmjzzkpde0hvxfg0d37mla0pdf",
           "coins": [
@@ -43,7 +59,7 @@
       "supply": [
         {
           "denom": "uallo",
-          "amount": "1000000"
+          "amount": "1000001000000"
         }
       ],
       "denom_metadata": [],
