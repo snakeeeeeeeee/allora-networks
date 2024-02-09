@@ -30,16 +30,15 @@ cat $validators2ImportFile | while read v; do
     valName="validator$i"
     echo "Importing $valName"
 
-    allorad --home=$APP_HOME keys import-hex \
-        --keyring-backend $KEYRING_BACKEND \
-        "validator$i" $v
+    # allorad --home=$APP_HOME keys import-hex \
+    #     --keyring-backend $KEYRING_BACKEND \
+    #     "validator$i" $v
 
     allorad --home=$APP_HOME genesis add-genesis-account $valName ${fundsValidators}${DENOM} --keyring-backend $KEYRING_BACKEND
     allorad --home=$APP_HOME genesis gentx $valName ${fundsValidators}${DENOM} \
         --chain-id $chainId --keyring-backend $KEYRING_BACKEND \
         --moniker="$valName" \
         --from=$valName \
-        --pubkey=$(allorad --home=$APP_HOME keys --keyring-backend=$KEYRING_BACKEND show $valNamez --pubkey) \
         --output-document $GENTXDIR/$valName.json
 
     i=$((i+1));
@@ -48,3 +47,6 @@ done
 allorad --home=$APP_HOME genesis collect-gentxs --gentx-dir $GENTXDIR
 
 echo "The genesis is in $APP_HOME/config"
+
+
+        # --pubkey=$(allorad --home=$APP_HOME keys --keyring-backend=$KEYRING_BACKEND show $valNamez --pubkey) \
