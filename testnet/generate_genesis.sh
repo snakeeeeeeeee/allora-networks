@@ -1,18 +1,18 @@
 #!/bin/bash
-set -exu
+set -eu
 
 CHAIN_ID="devnet"
 DENOM="uallo"
 VALIDATOR_TOKENS=1000000
 FAUCET_TOKENS=1000000000000000000
-VALIDATOR_NUMBER=3
+VALIDATOR_NUMBER=3    #! Used in save_keys_awssecretsmanager.sh
 
 ALLORAD="/usr/local/bin/allorad"
 keyringBackend=test
 
 faucetAccount="faucet"
 
-valPreffix="val"
+valPreffix="val"       #! Used in save_keys_awssecretsmanager.sh
 alloraHome="./"
 gentxDir=${alloraHome}/gentxs
 mkdir -p $gentxDir
@@ -20,7 +20,7 @@ mkdir -p $gentxDir
 $ALLORAD --home=$alloraHome init mymoniker --chain-id $CHAIN_ID --default-denom ${DENOM}
 
 #Create validators account
-for ((i=1; i<=$VALIDATOR_NUMBER; i++)); do
+for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
     valName="${valPreffix}${i}"
 
     echo "Generate $valName account"
@@ -42,7 +42,7 @@ $ALLORAD --home=$alloraHome genesis add-genesis-account \
     $faucetAccount ${FAUCET_TOKENS}${DENOM} \
     --keyring-backend $keyringBackend
 
-for ((i=1; i<=$VALIDATOR_NUMBER; i++)); do
+for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
     echo "Initializing Validator $i"
 
     valName="${valPreffix}${i}"
