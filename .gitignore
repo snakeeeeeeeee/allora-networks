@@ -6,3 +6,4 @@ data
 gentxs
 keyring-test
 val*
+*.account_info

@@ -25,7 +25,7 @@ for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
 
     echo "Generate $valName account"
     $ALLORAD --home=$alloraHome keys add $valName \
-        --keyring-backend $keyringBackend
+        --keyring-backend $keyringBackend > $valName.account_info 2>&1
 
     echo "Fund $valName account to genesis"
     $ALLORAD --home=$alloraHome genesis add-genesis-account \
@@ -35,7 +35,7 @@ done
 
 echo "Generate $faucetAccount account"
 $ALLORAD --home=$alloraHome keys add $faucetAccount \
-    --keyring-backend $keyringBackend
+    --keyring-backend $keyringBackend > $faucetAccount.account_info 2>&1
 
 echo "Fund $faucetAccount account"
 $ALLORAD --home=$alloraHome genesis add-genesis-account \
