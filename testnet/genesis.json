@@ -2,7 +2,7 @@
   "app_name": "allorad",
   "app_version": "main-0501badff170d062d1452fa667ac94ec51fcb23d",
   "genesis_time": "2024-02-21T20:00:04.751190889Z",
-  "chain_id": "testnet",
+  "chain_id": "devnet",
   "initial_height": 1,
   "app_hash": null,
   "app_state": {
