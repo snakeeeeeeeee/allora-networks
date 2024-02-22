@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-CHAIN_ID="devnet"
+CHAIN_ID="testnet"
 DENOM="uallo"
 VALIDATOR_TOKENS=1000000
 FAUCET_TOKENS=1000000000000000000
