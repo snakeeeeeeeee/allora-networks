@@ -79,20 +79,38 @@ keyringBackend=test
 #         --secret-string "$cprAlloraAccExport"
 # fi
 
-echo "generating allora account key for index-provider"
-mkdir -p ./index-provider
-$ALLORAD --home=./index-provider keys add index-provider --keyring-backend $keyringBackend > ./index-provider/index-provider.account_info 2>&1
-indexProviderAlloraAccExport=$($ALLORAD --home=./index-provider keys export index-provider --unarmored-hex --unsafe --keyring-backend $keyringBackend)
+# echo "generating allora account key for index-provider"
+# mkdir -p ./index-provider
+# $ALLORAD --home=./index-provider keys add index-provider --keyring-backend $keyringBackend > ./index-provider/index-provider.account_info 2>&1
+# indexProviderAlloraAccExport=$($ALLORAD --home=./index-provider keys export index-provider --unarmored-hex --unsafe --keyring-backend $keyringBackend)
 
-indexProvAlloraKeySecret="${CHAIN_ID}--index-provider--allora-account"
-echo "saving index-provider allora key to $indexProvAlloraKeySecret"
-if aws secretsmanager describe-secret --secret-id $indexProvAlloraKeySecret --region $AWS_REGION > /dev/null 2>&1 ; then
+# indexProvAlloraKeySecret="${CHAIN_ID}--index-provider--allora-account"
+# echo "saving index-provider allora key to $indexProvAlloraKeySecret"
+# if aws secretsmanager describe-secret --secret-id $indexProvAlloraKeySecret --region $AWS_REGION > /dev/null 2>&1 ; then
+#     aws secretsmanager put-secret-value \
+#         --secret-id $indexProvAlloraKeySecret --region $AWS_REGION \
+#         --secret-string "$indexProviderAlloraAccExport"
+# else
+#     aws secretsmanager create-secret \
+#         --name $indexProvAlloraKeySecret --region $AWS_REGION \
+#         --description "index-provider allorad account's key export" \
+#         --secret-string "$indexProviderAlloraAccExport"
+# fi
+
+echo "generating allora account key for nft-appraisals"
+mkdir -p ./nft-appraisals
+$ALLORAD --home=./nft-appraisals keys add nft-appraisals --keyring-backend $keyringBackend > ./nft-appraisals/nft-appraisals.account_info 2>&1
+nftAppraisalsAlloraAccExport=$($ALLORAD --home=./nft-appraisals keys export nft-appraisals --unarmored-hex --unsafe --keyring-backend $keyringBackend)
+
+nftAppraisalsAlloraKeySecret="${CHAIN_ID}--nft-appraisals--allora-account"
+echo "saving nft-appraisals allora key to $nftAppraisalsAlloraKeySecret"
+if aws secretsmanager describe-secret --secret-id $nftAppraisalsAlloraKeySecret --region $AWS_REGION > /dev/null 2>&1 ; then
     aws secretsmanager put-secret-value \
-        --secret-id $indexProvAlloraKeySecret --region $AWS_REGION \
-        --secret-string "$indexProviderAlloraAccExport"
+        --secret-id $nftAppraisalsAlloraKeySecret --region $AWS_REGION \
+        --secret-string "$nftAppraisalsAlloraAccExport"
 else
     aws secretsmanager create-secret \
-        --name $indexProvAlloraKeySecret --region $AWS_REGION \
-        --description "index-provider allorad account's key export" \
-        --secret-string "$indexProviderAlloraAccExport"
+        --name $nftAppraisalsAlloraKeySecret --region $AWS_REGION \
+        --description "nft-appraisals allorad account's key export" \
+        --secret-string "$nftAppraisalsAlloraAccExport"
 fi
