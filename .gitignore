@@ -7,3 +7,5 @@ gentxs
 keyring-test
 val*
 *.account_info
+sentry*
+.DS_store

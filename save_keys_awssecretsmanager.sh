@@ -1,9 +1,10 @@
 #!/bin/bash
 set -eux
 
-CHAIN_ID="edgenet"     #* Chain to sync
+CHAIN_ID="testnet"     #* Chain to sync
 VALIDATOR_NUMBER=3     #! Allign with the value in the CHAIN/generate_genesis.sh
 valPreffix="val"       #! Allign with the value in the CHAIN/generate_genesis.sh
+sentryPrefix="sentry"
 faucetAccount="faucet" #! Allign with the value in the CHAIN/generate_genesis.sh
 keyringBackend=test    #! Allign with the value in the CHAIN/generate_genesis.sh
 
@@ -67,6 +68,23 @@ for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
             --secret-string file://${CHAIN_ID}/${valName}/config/node_key.json
     fi
     savedSecrets="${savedSecrets}, $valKeySecret"
+
+
+    sentryName="${sentryPrefix}${i}"
+    sentrySecretPref="${ARGOCD_CLUSTER_VALIDATORS_DEPLOYED}--${CHAIN_ID}-sentries--sentry-${i}"
+    sentryKeySecret="${sentrySecretPref}--node_key"
+    echo "Save $sentryName priv_validator_key to $sentryKeySecret"
+    if aws secretsmanager describe-secret --secret-id $sentryKeySecret --region $AWS_REGION > /dev/null 2>&1 ; then
+        aws secretsmanager put-secret-value \
+            --secret-id $sentryKeySecret --region $AWS_REGION \
+            --secret-string file://${CHAIN_ID}/${sentryName}/config/node_key.json
+    else
+        aws secretsmanager create-secret \
+            --name $sentryKeySecret --region $AWS_REGION \
+            --description "$sentryName sentry's node_key.json" \
+            --secret-string file://${CHAIN_ID}/${sentryName}/config/node_key.json
+    fi
+    savedSecrets="${savedSecrets}, $sentryKeySecret"
 
 done
 

@@ -13,6 +13,7 @@ keyringBackend=test
 faucetAccount="faucet"
 
 valPreffix="val"       #! Used in save_keys_awssecretsmanager.sh
+sentryPrefix="sentry"     
 alloraHome="./"
 gentxDir=${alloraHome}/gentxs
 mkdir -p $gentxDir
@@ -52,7 +53,6 @@ for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
 
     $ALLORAD --home=$valHome init $valName --chain-id $CHAIN_ID --default-denom ${DENOM}
 
-    echo "got here"
     # Symlink genesis to have the accounts
     gln -sfr config/genesis.json $valHome/config/genesis.json
 
@@ -64,6 +64,16 @@ for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
         --moniker="$valName" \
         --from=$valName \
         --output-document $gentxDir/$valName.json
+done
+
+for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
+    echo "Initializing sentry $i"
+
+    sentryName="${sentryPrefix}${i}"
+    sentryHome="./$sentryName"
+    mkdir -p $sentryHome
+
+    $ALLORAD --home=$sentryHome init $sentryName --chain-id $CHAIN_ID --default-denom ${DENOM}
 done
 
 $ALLORAD --home=$alloraHome genesis collect-gentxs --gentx-dir $gentxDir
