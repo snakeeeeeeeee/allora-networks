@@ -11,3 +11,4 @@ sentry*
 .DS_store
 head
 coin-prediction*
+index-provider

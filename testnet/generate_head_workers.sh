@@ -61,20 +61,38 @@ keyringBackend=test
 #         --secret-string "$cpAlloraAccExport"
 # fi
 
-echo "generating allora account key for coin-prediction-randomized"
-mkdir -p ./coin-prediction-randomized
-$ALLORAD --home=./coin-prediction-randomized keys add coin-prediction-randomized --keyring-backend $keyringBackend > ./coin-prediction-randomized/coin-prediction-randomized.account_info 2>&1
-cprAlloraAccExport=$($ALLORAD --home=./coin-prediction-randomized keys export coin-prediction-randomized --unarmored-hex --unsafe --keyring-backend $keyringBackend)
+# echo "generating allora account key for coin-prediction-randomized"
+# mkdir -p ./coin-prediction-randomized
+# $ALLORAD --home=./coin-prediction-randomized keys add coin-prediction-randomized --keyring-backend $keyringBackend > ./coin-prediction-randomized/coin-prediction-randomized.account_info 2>&1
+# cprAlloraAccExport=$($ALLORAD --home=./coin-prediction-randomized keys export coin-prediction-randomized --unarmored-hex --unsafe --keyring-backend $keyringBackend)
 
-cprAlloraKeySecret="${CHAIN_ID}--coin-prediction-randomized--allora-account"
-echo "saving coin prediction randomized allora key to $cprAlloraKeySecret"
-if aws secretsmanager describe-secret --secret-id $cprAlloraKeySecret --region $AWS_REGION > /dev/null 2>&1 ; then
+# cprAlloraKeySecret="${CHAIN_ID}--coin-prediction-randomized--allora-account"
+# echo "saving coin prediction randomized allora key to $cprAlloraKeySecret"
+# if aws secretsmanager describe-secret --secret-id $cprAlloraKeySecret --region $AWS_REGION > /dev/null 2>&1 ; then
+#     aws secretsmanager put-secret-value \
+#         --secret-id $cprAlloraKeySecret --region $AWS_REGION \
+#         --secret-string "$cprAlloraAccExport"
+# else
+#     aws secretsmanager create-secret \
+#         --name $cprAlloraKeySecret --region $AWS_REGION \
+#         --description "coin prediction randomized allorad account's key export" \
+#         --secret-string "$cprAlloraAccExport"
+# fi
+
+echo "generating allora account key for index-provider"
+mkdir -p ./index-provider
+$ALLORAD --home=./index-provider keys add index-provider --keyring-backend $keyringBackend > ./index-provider/index-provider.account_info 2>&1
+indexProviderAlloraAccExport=$($ALLORAD --home=./index-provider keys export index-provider --unarmored-hex --unsafe --keyring-backend $keyringBackend)
+
+indexProvAlloraKeySecret="${CHAIN_ID}--index-provider--allora-account"
+echo "saving index-provider allora key to $indexProvAlloraKeySecret"
+if aws secretsmanager describe-secret --secret-id $indexProvAlloraKeySecret --region $AWS_REGION > /dev/null 2>&1 ; then
     aws secretsmanager put-secret-value \
-        --secret-id $cprAlloraKeySecret --region $AWS_REGION \
-        --secret-string "$cprAlloraAccExport"
+        --secret-id $indexProvAlloraKeySecret --region $AWS_REGION \
+        --secret-string "$indexProviderAlloraAccExport"
 else
     aws secretsmanager create-secret \
-        --name $cprAlloraKeySecret --region $AWS_REGION \
-        --description "coin prediction randomized allorad account's key export" \
-        --secret-string "$cprAlloraAccExport"
+        --name $indexProvAlloraKeySecret --region $AWS_REGION \
+        --description "index-provider allorad account's key export" \
+        --secret-string "$indexProviderAlloraAccExport"
 fi
