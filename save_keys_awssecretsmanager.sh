@@ -89,7 +89,6 @@ for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
 done
 
 echo "Save FAUCET account"
-
 alloraKeySecret="${CHAIN_ID}-faucet--allora-account"
 alloraAccExport=$($ALLORAD --home=$CHAIN_ID keys export $faucetAccount --unarmored-hex --unsafe --keyring-backend $keyringBackend)
 echo "Save $faucetAccount Allora account to $alloraKeySecret"
@@ -104,6 +103,26 @@ else
         --description "$faucetAccount allorad account's key export" \
         --force-overwrite-replica-secret \
         --secret-string "$alloraAccExport"
+fi
+
+savedSecrets="${savedSecrets}, $alloraKeySecret"
+
+
+echo "Save FAUCET mnemonic"
+mnemonic=$(tail -n 1 ./${CHAIN_ID}/faucet.account_info)
+alloraKeySecret="${CHAIN_ID}-faucet--allora-account--mnemonic"
+echo "Save $faucetAccount Allora account mnemonic to $alloraKeySecret"
+
+if aws secretsmanager describe-secret --secret-id $alloraKeySecret --region $AWS_REGION > /dev/null 2>&1 ; then
+    aws secretsmanager put-secret-value \
+        --secret-id $alloraKeySecret --region $AWS_REGION \
+        --secret-string "$mnemonic"
+else
+    aws secretsmanager create-secret \
+        --name $alloraKeySecret --region $AWS_REGION \
+        --description "$faucetAccount allorad account's mnemonic" \
+        --force-overwrite-replica-secret \
+        --secret-string "$mnemonic"
 fi
 
 savedSecrets="${savedSecrets}, $alloraKeySecret"
