@@ -5,7 +5,8 @@ CLUSTER_DEPLOYED="prod-us-east-1"
 CHAIN_ID="testnet"
 AWS_REGION="us-east-1"
 
-ALLORAD="/usr/local/bin/allorad"
+# ALLORAD="/usr/local/bin/allorad"
+ALLORAD=$(which allorad)
 keyringBackend=test
 
 echo "initializing head configs"

@@ -13,7 +13,8 @@ export AWS_PAGER=""    #* To disable pagination
 AWS_REGION="us-east-1"
 ARGOCD_CLUSTER_VALIDATORS_DEPLOYED="prod-us-east-1"
 
-ALLORAD="/usr/local/bin/allorad"
+# ALLORAD="/usr/local/bin/allorad"
+ALLORAD=$(which allorad)
 
 savedSecrets=""
 

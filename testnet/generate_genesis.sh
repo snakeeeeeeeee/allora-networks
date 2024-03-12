@@ -7,7 +7,8 @@ VALIDATOR_TOKENS=1000000
 FAUCET_TOKENS=1000000000000000000
 VALIDATOR_NUMBER=3    #! Used in save_keys_awssecretsmanager.sh
 
-ALLORAD="/usr/local/bin/allorad"
+# ALLORAD="/usr/local/bin/allorad"
+ALLORAD=$(which allorad)
 keyringBackend=test
 
 faucetAccount="faucet"
