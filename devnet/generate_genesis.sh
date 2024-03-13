@@ -1,55 +1,83 @@
 #!/bin/bash
-set -exu
+set -eu
 
-chainId="devnet"
-APP_HOME="/data/tmp"
-KEYRING_BACKEND=test
+CHAIN_ID="devnet"
 DENOM="uallo"
+VALIDATOR_TOKENS=1000000
+FAUCET_TOKENS=1000000000000000000
+VALIDATOR_NUMBER=3    #! Used in save_keys_awssecretsmanager.sh
 
-ALLORAD="/usr/local/bin/allorad"
+ALLORAD=$(which allorad)
+keyringBackend=test
 
-mkdir -p $APP_HOME
-#! If you run docker with -u `...` it need a writable HOME
-export HOME=$APP_HOME
+faucetAccount="faucet"
 
-echo "Initializing Appchain"
-allorad --home=$APP_HOME config set client chain-id $chainId
-allorad --home=$APP_HOME config set client keyring-backend $KEYRING_BACKEND
-allorad --home=$APP_HOME init mymoniker --chain-id $chainId --default-denom ${DENOM}
+valPreffix="val"       #! Used in save_keys_awssecretsmanager.sh
+sentryPrefix="sentry"     
+alloraHome="./"
+gentxDir=${alloraHome}/gentxs
+mkdir -p $gentxDir
 
-echo "Import Validators accounts"
-validators2ImportFile="validators2import.txt"
-fundsValidators=1000000
+# echo "$alloraHome"
+$ALLORAD --home=$alloraHome init mymoniker --chain-id $CHAIN_ID --default-denom ${DENOM}
 
-i=0
-GENTXDIR=${APP_HOME}/config/genesis_txs
-mkdir -p $GENTXDIR
+#Create validators account
+for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
+    valName="${valPreffix}${i}"
 
-cat $validators2ImportFile | while read v; do
+    echo "Generate $valName account"
+    $ALLORAD --home=$alloraHome keys add $valName \
+        --keyring-backend $keyringBackend > $valName.account_info 2>&1
 
-    valName="validator$i"
-    echo "Importing $valName"
-
-    # allorad --home=$APP_HOME keys import-hex \
-    #     --keyring-backend $KEYRING_BACKEND \
-    #     "validator$i" $v
-
-    allorad --home=$APP_HOME genesis add-genesis-account $valName ${fundsValidators}${DENOM} --keyring-backend $KEYRING_BACKEND
-    allorad --home=$APP_HOME genesis gentx $valName ${fundsValidators}${DENOM} \
-        --chain-id $chainId --keyring-backend $KEYRING_BACKEND \
-        --moniker="$valName" \
-        --from=$valName \
-        --output-document $GENTXDIR/$valName.json
-
-    i=$((i+1));
+    echo "Fund $valName account to genesis"
+    $ALLORAD --home=$alloraHome genesis add-genesis-account \
+        $valName ${VALIDATOR_TOKENS}${DENOM} \
+        --keyring-backend $keyringBackend
 done
 
-allorad --home=$APP_HOME genesis collect-gentxs --gentx-dir $GENTXDIR
+echo "Generate $faucetAccount account"
+$ALLORAD --home=$alloraHome keys add $faucetAccount \
+    --keyring-backend $keyringBackend > $faucetAccount.account_info 2>&1
 
-# Add FAUCET accounts
-allorad --home=$APP_HOME genesis add-genesis-account allo1ey0fvvpx3y99g7s8n8k7ft74dh0zq6y7l3fnke 1000000000000${DENOM} --keyring-backend $KEYRING_BACKEND
+echo "Fund $faucetAccount account"
+$ALLORAD --home=$alloraHome genesis add-genesis-account \
+    $faucetAccount ${FAUCET_TOKENS}${DENOM} \
+    --keyring-backend $keyringBackend
 
-echo "The genesis is in $APP_HOME/config"
+for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
+    echo "Initializing Validator $i"
 
+    valName="${valPreffix}${i}"
+    valHome="./$valName"
+    mkdir -p $valHome
 
-        # --pubkey=$(allorad --home=$APP_HOME keys --keyring-backend=$KEYRING_BACKEND show $valNamez --pubkey) \
+    $ALLORAD --home=$valHome init $valName --chain-id $CHAIN_ID --default-denom ${DENOM}
+
+    # Symlink genesis to have the accounts
+    gln -sfr config/genesis.json $valHome/config/genesis.json
+
+    # Symlink keyring-test to have keys
+    gln -sfr keyring-test $valHome/keyring-test
+
+    $ALLORAD --home=$valHome genesis gentx $valName ${VALIDATOR_TOKENS}${DENOM} \
+        --chain-id $CHAIN_ID --keyring-backend $keyringBackend \
+        --moniker="$valName" \
+        --from=$valName \
+        --output-document $gentxDir/$valName.json
+done
+
+for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
+    echo "Initializing sentry $i"
+
+    sentryName="${sentryPrefix}${i}"
+    sentryHome="./$sentryName"
+    mkdir -p $sentryHome
+
+    $ALLORAD --home=$sentryHome init $sentryName --chain-id $CHAIN_ID --default-denom ${DENOM}
+done
+
+$ALLORAD --home=$alloraHome genesis collect-gentxs --gentx-dir $gentxDir
+
+cp $alloraHome/config/genesis.json $alloraHome
+
+echo "$CHAIN_ID genesis generated."

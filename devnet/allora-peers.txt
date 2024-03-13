@@ -1,2 +1,0 @@
-
-appchain-0.devnet.staging-us-east-1.behindthecurtain.xyz
