@@ -9,6 +9,7 @@ WHITELISTED_HEX_PRIVATE_KEY=<pk>                                 # replace with 
 WEIGHT_CADENCE=10800
 INFERENCE_CADENCE=61
 NODE_RPC_URL=https://allora-rpc.edgenet.allora.network:443
+ADDRESSES=("alloaddress1" "alloaddress2" "alloaddressX")
 
 # import and fund a whitelisted account to run topic txs
 allorad keys import-hex --home=$HOME_DIR --keyring-backend $KEYRING_BACKEND whitelisted-0 $WHITELISTED_HEX_PRIVATE_KEY --node=$NODE_RPC_URL
@@ -34,3 +35,9 @@ yes | allorad tx emissions reactivate-topic $WHITELISTED_ADDRESS 3 --node=$NODE_
 yes | allorad tx emissions push-topic --home=$HOME_DIR --keyring-backend=$KEYRING_BACKEND --keyring-dir=$HOME_DIR --chain-id=$NETWORK $WHITELISTED_ADDRESS "Watches price appraisals topic" "bafybeicq5emepge5obvzf2si6wfskxtyjlagchub5inar3l577ixawn3vi" "watch-prices-weights-calc.wasm" $WEIGHT_CADENCE "bafybeifmz4hyk63eynmwmx3htfrshb3egpgl77xmqa2pjuxgimmzssa5ai" "watch-prices-inference.wasm" $INFERENCE_CADENCE "0x75F9F22D1070fDd56bD1DDF2DB4d65aB0F759431/51"
 yes | allorad  tx emissions  request-inference $WHITELISTED_ADDRESS  '{"nonce": "4","topic_id":"4","cadence":"60","max_price_per_inference":"1","bid_amount":"10000","timestamp_valid_until":"1711218625"}'
 yes | allorad tx emissions reactivate-topic $WHITELISTED_ADDRESS 4
+
+# fund head account and workers account
+for address in "${ADDRESSES[@]}"; do
+    echo "funding address: $address"
+    curl -Lvvv https://faucet.$NETWORK.allora.network/send/edgenet/$address
+done
