@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eu
 
-CLUSTER_DEPLOYED="prod-us-east-1"
-CHAIN_ID="testnet"
+CLUSTER_DEPLOYED="staging-us-east-1"
+CHAIN_ID="devnet"
 AWS_REGION="us-east-1"
 
 # ALLORAD="/usr/local/bin/allorad"
