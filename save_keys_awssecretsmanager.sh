@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eux
 
-CHAIN_ID="edgenet"     #* Chain to sync
+CHAIN_ID="testnet"     #* Chain to sync
 VALIDATOR_NUMBER=3     #! Allign with the value in the CHAIN/generate_genesis.sh
 valPreffix="val"       #! Allign with the value in the CHAIN/generate_genesis.sh
 sentryPrefix="sentry"
