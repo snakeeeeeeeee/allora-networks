@@ -44,7 +44,7 @@ else
 fi
 
 # Array of worker names
-workers=("coin-prediction" "coin-prediction-randomized" "index-provider" "nft-appraisals" "watch-prices")
+workers=("coin-prediction" "coin-prediction-randomized" "index-provider" "nft-appraisals" "watch-prices" "coin-prediction-reputer")
 
 for worker in "${workers[@]}"; do
     echo "generating allora account key for $worker"
