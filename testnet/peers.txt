@@ -1,1 +1,1 @@
-1452cf4dd317ca47de21ea75fb725cd2884060cf@peer-0.testnet.allora.network:30003,d6082f7535767a19ab7eb3d798a5f2a8dac600e4@peer-1.testnet.allora.network:30004,8772dcf17da0670800062ea8c7da6bd03190ef9b@peer-2.testnet.allora.network:30005
+a2919076678b89c955477d8460c9c932bd9786e7@peer-0.testnet.allora.network:30003,f784d1678dedc2204ba3e1a4ab04a39d2ada36a7@peer-1.testnet.allora.network:30004,15e23295c829cbfb50e876b294c014c20bef53bd@peer-2.testnet.allora.network:30005
