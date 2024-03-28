@@ -4,19 +4,18 @@ set -eu
 CHAIN_ID="testnet"
 DENOM="uallo"
 
-MAIN_WALLET_NAME="upshot"
-MAIN_WALLET_TOKENS=$((100*10**18))
+UPSHOT_WALLET_NAME="upshot"
+UPSHOT_WALLET_TOKENS=$((100*10**18))
+
+FAUCET_WALLET_NAME="faucet"
+FAUCET_WALLET_TOKENS=$((10**18))
 
 VALIDATOR_TOKENS=$(((10**26 - 100*10**18)/3))
 VALIDATOR_NUMBER=3                    #! Used in save_keys_awssecretsmanager.sh
 
-FAUCET_TOKENS=$((10**18))
-
-# ALLORAD="/usr/local/bin/allorad"
-ALLORAD=$(which allorad)
+# allorad="/usr/local/bin/allorad"
+allorad=$(which allorad)
 keyringBackend=test
-
-faucetAccount="faucet"
 
 valPreffix="val"                      #! Used in save_keys_awssecretsmanager.sh
 alloraHome="./"
@@ -24,38 +23,38 @@ gentxDir=${alloraHome}/gentxs
 mkdir -p $gentxDir
 
 # echo "$alloraHome"
-$ALLORAD --home=$alloraHome init mymoniker --chain-id $CHAIN_ID --default-denom ${DENOM}
+$allorad --home=$alloraHome init mymoniker --chain-id $CHAIN_ID --default-denom ${DENOM}
 
 #Create validators account
 for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
     valName="${valPreffix}${i}"
 
     echo "Generate $valName account"
-    $ALLORAD --home=$alloraHome keys add $valName \
+    $allorad --home=$alloraHome keys add $valName \
         --keyring-backend $keyringBackend > $valName.account_info 2>&1
 
     echo "Fund $valName account to genesis"
-    $ALLORAD --home=$alloraHome genesis add-genesis-account \
+    $allorad --home=$alloraHome genesis add-genesis-account \
         $valName ${VALIDATOR_TOKENS}${DENOM} \
         --keyring-backend $keyringBackend
 done
 
-echo "Generate $MAIN_WALLET_NAME account"
-$ALLORAD --home=$alloraHome keys add $MAIN_WALLET_NAME \
-    --keyring-backend $keyringBackend > $MAIN_WALLET_NAME.account_info 2>&1
+echo "Generate $UPSHOT_WALLET_NAME account"
+$allorad --home=$alloraHome keys add $UPSHOT_WALLET_NAME \
+    --keyring-backend $keyringBackend > $UPSHOT_WALLET_NAME.account_info 2>&1
 
-echo "Fund $MAIN_WALLET_NAME account"
-$ALLORAD --home=$alloraHome genesis add-genesis-account \
-    $MAIN_WALLET_NAME ${MAIN_WALLET_TOKENS}${DENOM} \
+echo "Fund $UPSHOT_WALLET_NAME account"
+$allorad --home=$alloraHome genesis add-genesis-account \
+    $UPSHOT_WALLET_NAME ${UPSHOT_WALLET_TOKENS}${DENOM} \
     --keyring-backend $keyringBackend
 
-echo "Generate $faucetAccount account"
-$ALLORAD --home=$alloraHome keys add $faucetAccount \
-    --keyring-backend $keyringBackend > $faucetAccount.account_info 2>&1
+echo "Generate $FAUCET_WALLET_NAME account"
+$allorad --home=$alloraHome keys add $FAUCET_WALLET_NAME \
+    --keyring-backend $keyringBackend > $FAUCET_WALLET_NAME.account_info 2>&1
 
-echo "Fund $faucetAccount account"
-$ALLORAD --home=$alloraHome genesis add-genesis-account \
-    $faucetAccount ${FAUCET_TOKENS}${DENOM} \
+echo "Fund $FAUCET_WALLET_NAME account"
+$allorad --home=$alloraHome genesis add-genesis-account \
+    $FAUCET_WALLET_NAME ${FAUCET_WALLET_TOKENS}${DENOM} \
     --keyring-backend $keyringBackend
 
 for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
@@ -65,7 +64,7 @@ for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
     valHome="./$valName"
     mkdir -p $valHome
 
-    $ALLORAD --home=$valHome init $valName --chain-id $CHAIN_ID --default-denom ${DENOM}
+    $allorad --home=$valHome init $valName --chain-id $CHAIN_ID --default-denom ${DENOM}
 
     # Symlink genesis to have the accounts
     ln -sfr config/genesis.json $valHome/config/genesis.json
@@ -73,14 +72,14 @@ for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
     # Symlink keyring-test to have keys
     ln -sfr keyring-test $valHome/keyring-test
 
-    $ALLORAD --home=$valHome genesis gentx $valName ${VALIDATOR_TOKENS}${DENOM} \
+    $allorad --home=$valHome genesis gentx $valName ${VALIDATOR_TOKENS}${DENOM} \
         --chain-id $CHAIN_ID --keyring-backend $keyringBackend \
         --moniker="$valName" \
         --from=$valName \
         --output-document $gentxDir/$valName.json
 done
 
-$ALLORAD --home=$alloraHome genesis collect-gentxs --gentx-dir $gentxDir
+$allorad --home=$alloraHome genesis collect-gentxs --gentx-dir $gentxDir
 
 cp $alloraHome/config/genesis.json $alloraHome
 
