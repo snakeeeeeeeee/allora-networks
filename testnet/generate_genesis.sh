@@ -5,12 +5,11 @@ CHAIN_ID="testnet"
 DENOM="uallo"
 
 UPSHOT_WALLET_NAME="upshot"
-UPSHOT_WALLET_TOKENS=$((100*10**18))
-
+UPSHOT_WALLET_TOKENS=$(echo '99*10^18' | bc)
 FAUCET_WALLET_NAME="faucet"
-FAUCET_WALLET_TOKENS=$((10**18))
+FAUCET_WALLET_TOKENS=$(echo '10^18' | bc)
 
-VALIDATOR_TOKENS=$(((10**26 - 100*10**18)/3))
+VALIDATOR_TOKENS=$(echo '(10^26 - 100*10^18)/3' | bc)
 VALIDATOR_NUMBER=3                    #! Used in save_keys_awssecretsmanager.sh
 
 # allorad="/usr/local/bin/allorad"
