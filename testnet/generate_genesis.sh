@@ -3,9 +3,14 @@ set -eu
 
 CHAIN_ID="testnet"
 DENOM="uallo"
-VALIDATOR_TOKENS=1000000
-FAUCET_TOKENS=1000000000000000000
-VALIDATOR_NUMBER=3    #! Used in save_keys_awssecretsmanager.sh
+
+MAIN_WALLET_NAME=$((10**20))
+MAIN_WALLET_TOKENS=$((10**20))
+
+VALIDATOR_TOKENS=$((10**3))
+VALIDATOR_NUMBER=3                    #! Used in save_keys_awssecretsmanager.sh
+
+FAUCET_TOKENS=$((10**2))
 
 # ALLORAD="/usr/local/bin/allorad"
 ALLORAD=$(which allorad)
@@ -13,8 +18,7 @@ keyringBackend=test
 
 faucetAccount="faucet"
 
-valPreffix="val"       #! Used in save_keys_awssecretsmanager.sh
-sentryPrefix="sentry"     
+valPreffix="val"                      #! Used in save_keys_awssecretsmanager.sh
 alloraHome="./"
 gentxDir=${alloraHome}/gentxs
 mkdir -p $gentxDir
@@ -36,6 +40,15 @@ for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
         --keyring-backend $keyringBackend
 done
 
+echo "Generate $MAIN_WALLET_NAME account"
+$ALLORAD --home=$alloraHome keys add $MAIN_WALLET_NAME \
+    --keyring-backend $keyringBackend > $MAIN_WALLET_NAME.account_info 2>&1
+
+echo "Fund $MAIN_WALLET_NAME account"
+$ALLORAD --home=$alloraHome genesis add-genesis-account \
+    $MAIN_WALLET_NAME ${MAIN_WALLET_TOKENS}${DENOM} \
+    --keyring-backend $keyringBackend
+
 echo "Generate $faucetAccount account"
 $ALLORAD --home=$alloraHome keys add $faucetAccount \
     --keyring-backend $keyringBackend > $faucetAccount.account_info 2>&1
@@ -55,26 +68,16 @@ for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
     $ALLORAD --home=$valHome init $valName --chain-id $CHAIN_ID --default-denom ${DENOM}
 
     # Symlink genesis to have the accounts
-    gln -sfr config/genesis.json $valHome/config/genesis.json
+    ln -sfr config/genesis.json $valHome/config/genesis.json
 
     # Symlink keyring-test to have keys
-    gln -sfr keyring-test $valHome/keyring-test
+    ln -sfr keyring-test $valHome/keyring-test
 
     $ALLORAD --home=$valHome genesis gentx $valName ${VALIDATOR_TOKENS}${DENOM} \
         --chain-id $CHAIN_ID --keyring-backend $keyringBackend \
         --moniker="$valName" \
         --from=$valName \
         --output-document $gentxDir/$valName.json
-done
-
-for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
-    echo "Initializing sentry $i"
-
-    sentryName="${sentryPrefix}${i}"
-    sentryHome="./$sentryName"
-    mkdir -p $sentryHome
-
-    $ALLORAD --home=$sentryHome init $sentryName --chain-id $CHAIN_ID --default-denom ${DENOM}
 done
 
 $ALLORAD --home=$alloraHome genesis collect-gentxs --gentx-dir $gentxDir
