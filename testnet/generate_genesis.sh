@@ -5,7 +5,7 @@ CHAIN_ID="testnet"
 DENOM="uallo"
 
 UPSHOT_WALLET_NAME="upshot"
-UPSHOT_WALLET_TOKENS=$(echo '100*10^18' | bc)
+UPSHOT_WALLET_TOKENS=$(echo '99*10^18' | bc)
 FAUCET_WALLET_NAME="faucet"
 FAUCET_WALLET_TOKENS=$(echo '10^18' | bc)
 
