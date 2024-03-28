@@ -4,13 +4,13 @@ set -eu
 CHAIN_ID="testnet"
 DENOM="uallo"
 
-MAIN_WALLET_NAME=$((10**20))
-MAIN_WALLET_TOKENS=$((10**20))
+MAIN_WALLET_NAME="upshot"
+MAIN_WALLET_TOKENS=$((100*10**18))
 
-VALIDATOR_TOKENS=$((10**3))
+VALIDATOR_TOKENS=$(((10**26 - 100*10**18)/3))
 VALIDATOR_NUMBER=3                    #! Used in save_keys_awssecretsmanager.sh
 
-FAUCET_TOKENS=$((10**2))
+FAUCET_TOKENS=$((10**18))
 
 # ALLORAD="/usr/local/bin/allorad"
 ALLORAD=$(which allorad)
