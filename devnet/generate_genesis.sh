@@ -5,7 +5,7 @@ CHAIN_ID="devnet"
 DENOM="uallo"
 VALIDATOR_TOKENS=1000000
 FAUCET_TOKENS=1000000000000000000
-VALIDATOR_NUMBER=1    #! Used in save_keys_awssecretsmanager.sh
+VALIDATOR_NUMBER=3    #! Used in save_keys_awssecretsmanager.sh
 
 ALLORAD=$(which allorad)
 keyringBackend=test
