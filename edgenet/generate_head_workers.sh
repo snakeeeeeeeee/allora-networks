@@ -10,7 +10,7 @@ ALLORAD=$(which allorad)
 keyringBackend=test
 
 echo "initializing head configs"
-docker run -it --entrypoint=bash -v "./head":/data 696230526504.dkr.ecr.us-east-1.amazonaws.com/allora-inference-base:dev-latest -c "mkdir -p /data/key && cd /data/key && allora-keys"
+docker run -it --entrypoint=bash -v "./head":/data alloranetwork/allora-inference-base:dev-latest -c "mkdir -p /data/key && cd /data/key && allora-keys"
 cat ./head/key/priv.bin | base64 > ./head/key/priv.base64
 
 headKeySecret="${CLUSTER_DEPLOYED}--${CHAIN_ID}-heads--head-0--p2p-privatekey"
