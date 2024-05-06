@@ -4,9 +4,6 @@ set -eu
 CHAIN_ID="devnet"
 VALIDATOR_NUMBER=${VALIDATOR_NUMBER:-3}       #! Used in save_keys_awssecretsmanager.sh
 
-
-echo $VALIDATOR_NUMBER
-exit
 DENOM="uallo"
 UPSHOT_WALLET_NAME="upshot"
 UPSHOT_WALLET_TOKENS=$(echo '99*10^18' | bc)
