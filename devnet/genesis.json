@@ -149,7 +149,7 @@
     "emissions": {
       "params": {
         "version": "0.0.3",
-        "max_serialized_msg_length": "1000000"
+        "max_serialized_msg_length": "1000000",
         "min_topic_weight": "100",
         "max_topics_per_block": "2048",
         "max_missing_inference_percent": "0.2",
@@ -185,7 +185,7 @@
         "registration_fee": "6",
         "default_limit": "100",
         "max_limit": "1000",
-        "min_epoch_length_record_limit": "3",
+        "min_epoch_length_record_limit": "3"
       },
       "core_team_addresses": [
         "allo16270t36amc3y6wk2wqupg6gvg26x6dc2nr5xwl",
