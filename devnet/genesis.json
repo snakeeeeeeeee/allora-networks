@@ -154,7 +154,7 @@
         "max_topics_per_block": "2048",
         "max_missing_inference_percent": "0.2",
         "required_minimum_stake": "100",
-        "remove_stake_delay_window": "86400",
+        "remove_stake_delay_window": "259200",
         "min_epoch_length": "1",
         "beta_entropy": "0.25",
         "learning_rate": "0.05",
