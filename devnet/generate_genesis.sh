@@ -119,9 +119,9 @@ FAUCET_ADDRESS=$($allorad --home=$genesisHome keys show $FAUCET_WALLET_NAME -a -
 FAUCET_ADDRESS="${FAUCET_ADDRESS%%[[:cntrl:]]}"
 
 dasel put 'app_state.emissions.core_team_addresses.append()' -t string -v $FAUCET_ADDRESS -f $genesisHome/config/genesis.json
-dasel put 'app_state.slashing.params.signed_blocks_window' -t string -v "10000" -f $genesisHome/config/genesis.json
-dasel put 'app_state.slashing.params.min_signed_per_window' -t string -v "0.050000000000000000" -f $genesisHome/config/genesis.json
-dasel put 'app_state.slashing.params.downtime_jail_duration' -t string -v "600s" -f $genesisHome/config/genesis.json
+dasel put 'app_state.slashing.params.signed_blocks_window' -t string -v "90000" -f $genesisHome/config/genesis.json
+dasel put 'app_state.slashing.params.min_signed_per_window' -t string -v "0.330000000000000000" -f $genesisHome/config/genesis.json
+dasel put 'app_state.slashing.params.downtime_jail_duration' -t string -v "3600s" -f $genesisHome/config/genesis.json
 dasel put 'app_state.slashing.params.slash_fraction_double_sign' -t string -v "0.050000000000000000" -f $genesisHome/config/genesis.json
 dasel put 'app_state.slashing.params.slash_fraction_downtime' -t string -v "0.00010000000000000" -f $genesisHome/config/genesis.json
 dasel put 'app_state.staking.params.unbonding_time' -t string -v "1814400s" -f $genesisHome/config/genesis.json
