@@ -25,6 +25,7 @@ keyringBackend=test
 
 valPreffix="validator"
 sentryPrefix="sentry" 
+seedPrefix="seed"
 
 genesisHome="$COMMON_HOME_DIR/genesis"
 gentxDir=${genesisHome}/gentxs
@@ -144,3 +145,13 @@ for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
     $allorad --home=$sentryHome init $sentryName --chain-id $CHAIN_ID --default-denom ${DENOM}
 done
 
+# OPTIONAL: Create seed account
+for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
+    echo "Initializing Seed $i"
+
+    seeedName="${seedPrefix}${i}"
+    seedHome="$COMMON_HOME_DIR/$seeedName"
+    mkdir -p $seedHome
+
+    $allorad --home=$seedHome init $seeedName --chain-id $CHAIN_ID --default-denom ${DENOM}
+done
