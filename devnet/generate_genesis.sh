@@ -6,18 +6,18 @@ VALIDATOR_NUMBER=${VALIDATOR_NUMBER:-3}       #! Used in save_keys_awssecretsman
 
 DENOM="uallo"
 UPSHOT_WALLET_NAME="upshot"
-UPSHOT_WALLET_TOKENS=$(echo '99*10^18' | bc)
+UPSHOT_WALLET_TOKENS=$(echo '99*10^18' | bc) # 99 allo
 FAUCET_WALLET_NAME="faucet"
-FAUCET_WALLET_TOKENS=$(echo '10^18' | bc)
+FAUCET_WALLET_TOKENS=$(echo '10^18' | bc) # 1 allo
 # These numbers should match the Token distribution schedule described in the whitepaper
 FOUNDATION_WALLET_NAME="foundation"
-FOUNDATION_WALLET_TOKENS=$(echo '10^26' | bc) # 10% of total token supply of 1e27
+FOUNDATION_WALLET_TOKENS=$(echo '10^26' | bc) # 10% of total token supply of 1e27 (1 Billion Allo)
 INVESTORS_WALLET_NAME="investors"
 INVESTORS_WALLET_TOKENS=$(echo '3.105*10^26' | bc | cut -f 1 -d '.') # 31.05% of total token supply of 1e27
 TEAM_WALLET_NAME="team"
 TEAM_WALLET_TOKENS=$(echo '1.75*10^26' | bc | cut -f 1 -d '.') # 17.5% of total token supply of 1e27
 
-VALIDATOR_TOKENS=$(echo '(10^26 - 100*10^18)/3' | bc)
+VALIDATOR_TOKENS=$(echo '(10^26 - 100*10^18)/3' | bc) # 100M allo - 100 allo
 COMMON_HOME_DIR="${COMMON_HOME_DIR:-$(pwd)}"
 
 allorad=$(which allorad)
