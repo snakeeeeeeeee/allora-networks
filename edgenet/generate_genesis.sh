@@ -133,25 +133,3 @@ dasel put 'app_state.staking.params.min_commission_rate' -t string -v "0.0500000
 cp -f $genesisHome/config/genesis.json $COMMON_HOME_DIR
 
 echo "$CHAIN_ID genesis generated."
-
-# OPTIONAL: Create sentry accounts
-for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
-    echo "Initializing sentry $i"
-
-    sentryName="${sentryPrefix}${i}"
-    sentryHome="$COMMON_HOME_DIR/$sentryName"
-    mkdir -p $sentryHome
-
-    $allorad --home=$sentryHome init $sentryName --chain-id $CHAIN_ID --default-denom ${DENOM}
-done
-
-# OPTIONAL: Create seed account
-for ((i=0; i<$VALIDATOR_NUMBER; i++)); do
-    echo "Initializing Seed $i"
-
-    seeedName="${seedPrefix}${i}"
-    seedHome="$COMMON_HOME_DIR/$seeedName"
-    mkdir -p $seedHome
-
-    $allorad --home=$seedHome init $seeedName --chain-id $CHAIN_ID --default-denom ${DENOM}
-done
