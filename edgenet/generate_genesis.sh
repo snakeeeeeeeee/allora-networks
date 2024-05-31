@@ -2,7 +2,7 @@
 set -eu
 
 CHAIN_ID="edgenet"
-VALIDATOR_NUMBER=${VALIDATOR_NUMBER:-3}
+VALIDATOR_NUMBER=${VALIDATOR_NUMBER:-3}       #! Used in save_keys_awssecretsmanager.sh
 
 DENOM="uallo"
 UPSHOT_WALLET_NAME="upshot"
@@ -23,10 +23,7 @@ COMMON_HOME_DIR="${COMMON_HOME_DIR:-$(pwd)}"
 allorad=$(which allorad)
 keyringBackend=test
 
-valPreffix="validator"
-sentryPrefix="sentry" 
-seedPrefix="seed"
-
+valPreffix="validator"                      #! Used in save_keys_awssecretsmanager.sh
 genesisHome="$COMMON_HOME_DIR/genesis"
 gentxDir=${genesisHome}/gentxs
 mkdir -p $gentxDir
