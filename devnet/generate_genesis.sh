@@ -6,18 +6,18 @@ VALIDATOR_NUMBER=${VALIDATOR_NUMBER:-3}       #! Used in save_keys_awssecretsman
 
 DENOM="uallo"
 UPSHOT_WALLET_NAME="upshot"
-UPSHOT_WALLET_TOKENS=$(echo '99*10^18' | bc)
+UPSHOT_WALLET_TOKENS=$(echo '99*10^18' | bc) # 99 allo
 FAUCET_WALLET_NAME="faucet"
-FAUCET_WALLET_TOKENS=$(echo '10^18' | bc)
+FAUCET_WALLET_TOKENS=$(echo '10^18' | bc) # 1 allo
 # These numbers should match the Token distribution schedule described in the whitepaper
 FOUNDATION_WALLET_NAME="foundation"
-FOUNDATION_WALLET_TOKENS=$(echo '10^26' | bc) # 10% of total token supply of 1e27
+FOUNDATION_WALLET_TOKENS=$(echo '10^26' | bc) # 10% of total token supply of 1e27 (1 Billion Allo)
 INVESTORS_WALLET_NAME="investors"
 INVESTORS_WALLET_TOKENS=$(echo '3.105*10^26' | bc | cut -f 1 -d '.') # 31.05% of total token supply of 1e27
 TEAM_WALLET_NAME="team"
 TEAM_WALLET_TOKENS=$(echo '1.75*10^26' | bc | cut -f 1 -d '.') # 17.5% of total token supply of 1e27
 
-VALIDATOR_TOKENS=$(echo '(10^26 - 100*10^18)/3' | bc)
+VALIDATOR_TOKENS=$(echo '(10^26 - 100*10^18)/3' | bc) # 100M allo - 100 allo
 COMMON_HOME_DIR="${COMMON_HOME_DIR:-$(pwd)}"
 
 allorad=$(which allorad)
@@ -119,9 +119,9 @@ FAUCET_ADDRESS=$($allorad --home=$genesisHome keys show $FAUCET_WALLET_NAME -a -
 FAUCET_ADDRESS="${FAUCET_ADDRESS%%[[:cntrl:]]}"
 
 dasel put 'app_state.emissions.core_team_addresses.append()' -t string -v $FAUCET_ADDRESS -f $genesisHome/config/genesis.json
-dasel put 'app_state.slashing.params.signed_blocks_window' -t string -v "10000" -f $genesisHome/config/genesis.json
-dasel put 'app_state.slashing.params.min_signed_per_window' -t string -v "0.050000000000000000" -f $genesisHome/config/genesis.json
-dasel put 'app_state.slashing.params.downtime_jail_duration' -t string -v "600s" -f $genesisHome/config/genesis.json
+dasel put 'app_state.slashing.params.signed_blocks_window' -t string -v "90000" -f $genesisHome/config/genesis.json
+dasel put 'app_state.slashing.params.min_signed_per_window' -t string -v "0.330000000000000000" -f $genesisHome/config/genesis.json
+dasel put 'app_state.slashing.params.downtime_jail_duration' -t string -v "3600s" -f $genesisHome/config/genesis.json
 dasel put 'app_state.slashing.params.slash_fraction_double_sign' -t string -v "0.050000000000000000" -f $genesisHome/config/genesis.json
 dasel put 'app_state.slashing.params.slash_fraction_downtime' -t string -v "0.00010000000000000" -f $genesisHome/config/genesis.json
 dasel put 'app_state.staking.params.unbonding_time' -t string -v "1814400s" -f $genesisHome/config/genesis.json
