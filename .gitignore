@@ -17,3 +17,4 @@ watch-prices
 save_keys_awssecretsmanager.sh
 seed*
 generate_sentry_seed.sh
+restore
