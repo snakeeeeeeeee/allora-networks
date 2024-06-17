@@ -1,7 +1,7 @@
 {
   "app_name": "allorad",
-  "app_version": "main-83ea22205dc5e88db3f076d9186cb98175706776",
-  "genesis_time": "2024-06-10T15:31:19.775522Z",
+  "app_version": "main-65b89f16305d9a2d9b8c4c7382755daea96d08de",
+  "genesis_time": "2024-06-17T17:31:38.504528Z",
   "chain_id": "edgenet",
   "initial_height": 1,
   "app_hash": null,
@@ -18,56 +18,56 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "allo1amdc4rfq5jftweevedqrt3txhdw9ttqmufjflu",
+          "address": "allo1kan6fh7x0lw6j3js99vc8uq28s5fmpz3y537s5",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "allo1c8sj46tle2crt4jmgryjsltvc77kh8vrf87q7s",
+          "address": "allo1vt0nvsptzhrelgevzjgud46s7nw8hk2cr0hk72",
           "pub_key": null,
           "account_number": "1",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "allo1nuy9cwfgu0gra92fh9hl6xv67fm87ktd9sn52y",
+          "address": "allo1cck0ruu6jecskdnw04yxex2f2trpgcgcmdvrcl",
           "pub_key": null,
           "account_number": "2",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "allo1xtzneseylukux85443xwp37qy7ydnyqsxtu22n",
+          "address": "allo1zenmwy6670d72jdyuugd67d25kpem6g64eulr3",
           "pub_key": null,
           "account_number": "3",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "allo19xae4us585vcl84wuhx545azpnl58zyqkvw9ht",
+          "address": "allo1j06w9fgjmjsk3lq4smnqjgr0j4ayvhmq7f0lp0",
           "pub_key": null,
           "account_number": "4",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "allo1pnw0ea74qdaqvsakm68xuyyz5tfr7nemedk3nz",
+          "address": "allo1jfk4ym7l8v3q47t0xh3mmgs8nxwslsgnde7lk5",
           "pub_key": null,
           "account_number": "5",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "allo1ng0c79r7u90vt3whxmtrznk99j8je4pqdeqjtc",
+          "address": "allo14lxqef7c0m8uutv06k7860zjkzx8yrktxrtk5c",
           "pub_key": null,
           "account_number": "6",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "allo15f0sl9mvph2u8nhkdrpdk2vy865zmycl50dwl6",
+          "address": "allo1a5xlkrprrmf6jgrmeat298s7q52a7fmwdfc6gp",
           "pub_key": null,
           "account_number": "7",
           "sequence": "0"
@@ -84,25 +84,7 @@
       },
       "balances": [
         {
-          "address": "allo1pnw0ea74qdaqvsakm68xuyyz5tfr7nemedk3nz",
-          "coins": [
-            {
-              "denom": "uallo",
-              "amount": "100000000000000000000000000"
-            }
-          ]
-        },
-        {
-          "address": "allo19xae4us585vcl84wuhx545azpnl58zyqkvw9ht",
-          "coins": [
-            {
-              "denom": "uallo",
-              "amount": "1000000000000000000"
-            }
-          ]
-        },
-        {
-          "address": "allo1xtzneseylukux85443xwp37qy7ydnyqsxtu22n",
+          "address": "allo1zenmwy6670d72jdyuugd67d25kpem6g64eulr3",
           "coins": [
             {
               "denom": "uallo",
@@ -111,7 +93,34 @@
           ]
         },
         {
-          "address": "allo1ng0c79r7u90vt3whxmtrznk99j8je4pqdeqjtc",
+          "address": "allo1vt0nvsptzhrelgevzjgud46s7nw8hk2cr0hk72",
+          "coins": [
+            {
+              "denom": "uallo",
+              "amount": "33333300000000000000000000"
+            }
+          ]
+        },
+        {
+          "address": "allo1jfk4ym7l8v3q47t0xh3mmgs8nxwslsgnde7lk5",
+          "coins": [
+            {
+              "denom": "uallo",
+              "amount": "100000000000000000000000000"
+            }
+          ]
+        },
+        {
+          "address": "allo1j06w9fgjmjsk3lq4smnqjgr0j4ayvhmq7f0lp0",
+          "coins": [
+            {
+              "denom": "uallo",
+              "amount": "1000000000000000000"
+            }
+          ]
+        },
+        {
+          "address": "allo14lxqef7c0m8uutv06k7860zjkzx8yrktxrtk5c",
           "coins": [
             {
               "denom": "uallo",
@@ -120,7 +129,7 @@
           ]
         },
         {
-          "address": "allo1nuy9cwfgu0gra92fh9hl6xv67fm87ktd9sn52y",
+          "address": "allo1kan6fh7x0lw6j3js99vc8uq28s5fmpz3y537s5",
           "coins": [
             {
               "denom": "uallo",
@@ -129,29 +138,20 @@
           ]
         },
         {
-          "address": "allo15f0sl9mvph2u8nhkdrpdk2vy865zmycl50dwl6",
+          "address": "allo1cck0ruu6jecskdnw04yxex2f2trpgcgcmdvrcl",
+          "coins": [
+            {
+              "denom": "uallo",
+              "amount": "33333300000000000000000000"
+            }
+          ]
+        },
+        {
+          "address": "allo1a5xlkrprrmf6jgrmeat298s7q52a7fmwdfc6gp",
           "coins": [
             {
               "denom": "uallo",
               "amount": "175000000000000000000000000"
-            }
-          ]
-        },
-        {
-          "address": "allo1c8sj46tle2crt4jmgryjsltvc77kh8vrf87q7s",
-          "coins": [
-            {
-              "denom": "uallo",
-              "amount": "33333300000000000000000000"
-            }
-          ]
-        },
-        {
-          "address": "allo1amdc4rfq5jftweevedqrt3txhdw9ttqmufjflu",
-          "coins": [
-            {
-              "denom": "uallo",
-              "amount": "33333300000000000000000000"
             }
           ]
         }
@@ -247,7 +247,7 @@
         "allo1jc2mme2fj458kg08v2z92m8f9vsqwfzt0ju9ys",
         "allo1uff55lgqpjkw2mlsx2q0p8q8z7k7p00w9s4s0f",
         "allo136eeqhawxx66sjgsfeqk9gewq0e0msyu5tjmj3",
-        "allo19xae4us585vcl84wuhx545azpnl58zyqkvw9ht"
+        "allo1j06w9fgjmjsk3lq4smnqjgr0j4ayvhmq7f0lp0"
       ]
     },
     "feeibc": {
@@ -278,10 +278,10 @@
                 },
                 "min_self_delegation": "1",
                 "delegator_address": "",
-                "validator_address": "allovaloper1amdc4rfq5jftweevedqrt3txhdw9ttqmtd52rs",
+                "validator_address": "allovaloper1kan6fh7x0lw6j3js99vc8uq28s5fmpz3nshavc",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "y5QefnytNDaSccuZYFJvAwDZywORh8pb9P58JtAFU6M="
+                  "key": "S13ShWvbuP9dk8dNnaqf0mbBgxClQJCABMv1yCIj2zE="
                 },
                 "value": {
                   "denom": "uallo",
@@ -289,7 +289,7 @@
                 }
               }
             ],
-            "memo": "589277909148eca92fb813edd41f23c30d201e69@192.168.1.26:26656",
+            "memo": "b32a10820646a5ab147d4cea4bb1e15aeae970cf@192.168.1.23:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -299,7 +299,7 @@
               {
                 "public_key": {
                   "@type": "/cosmos.crypto.secp256k1.PubKey",
-                  "key": "AhUYOZ808cRiwnsnevCMcyuk8foZC/26fFsR7w5WMyKM"
+                  "key": "A2Tc97dbthPo97B1kSGSY6Sgy9ExfBkU2xr2ba8trmDz"
                 },
                 "mode_info": {
                   "single": {
@@ -318,7 +318,7 @@
             "tip": null
           },
           "signatures": [
-            "oSZL+ZtF6xkAE5Wz34N7lDs461sCa9vKktX2uaOfxyBpW7I8sMMt4l1o0mYkFxTDXxYHkU9XCwxNL95uaWbgnw=="
+            "kB+3VMC3Cclzh6HqQfjh9QeXmkq3c1GRt0hXXcgBg3UuaSxbNZKSZVAan/v+XZzOBxNn/52OoI4SvDCBA1Vt9w=="
           ]
         },
         {
@@ -340,10 +340,10 @@
                 },
                 "min_self_delegation": "1",
                 "delegator_address": "",
-                "validator_address": "allovaloper1c8sj46tle2crt4jmgryjsltvc77kh8vr7rcrzu",
+                "validator_address": "allovaloper1vt0nvsptzhrelgevzjgud46s7nw8hk2c5t34zx",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "AO/cPHdnzYcgYI0HTUh8kndRZHnyX1hxaBdsKnYPemg="
+                  "key": "GEWLQ0Xdg4dlHLOPKEe+8cBMejobkdMRW8VbMF0tKLo="
                 },
                 "value": {
                   "denom": "uallo",
@@ -351,7 +351,7 @@
                 }
               }
             ],
-            "memo": "e201118424df3a26b3329bac545d4a3165ca3de7@192.168.1.26:26656",
+            "memo": "d57b16a91543b7380def1f8a9291f01f5decce62@192.168.1.23:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -361,7 +361,7 @@
               {
                 "public_key": {
                   "@type": "/cosmos.crypto.secp256k1.PubKey",
-                  "key": "A5A+R3j/StnJ38/oGcU7c2cEBFKj3/vybCXHXSPCHJi5"
+                  "key": "AqHZdZIsnsvf50u/5YnGMddlFJSR+tHiCpHJ8rLRkmiL"
                 },
                 "mode_info": {
                   "single": {
@@ -380,7 +380,7 @@
             "tip": null
           },
           "signatures": [
-            "olS1hilJrobpUflDW/3ka+xxM7cdLLfdYU6XSPOPkKM/rftBmCa9gSxIqa3d9DxTNSNpym+B/MbGhokKXnvT0w=="
+            "BoXGcYEUk8/vNcgp9itfQp06wGy2lFHZxXJZsyzJ/ghO93rvrrq2RRVfrJYlR2a9LwjUYz16H3FfbFPlxl4YXA=="
           ]
         },
         {
@@ -402,10 +402,10 @@
                 },
                 "min_self_delegation": "1",
                 "delegator_address": "",
-                "validator_address": "allovaloper1nuy9cwfgu0gra92fh9hl6xv67fm87ktdj54hkg",
+                "validator_address": "allovaloper1cck0ruu6jecskdnw04yxex2f2trpgcgcvf2qyn",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "4XWFqYfwCwxzrp0AzPclm0luXY0wL0VEsHeaaxC6BOQ="
+                  "key": "jsz3ttDMr3rHIoRq9mtSm9dt4Ytte8XmdlJR4Hv/LfI="
                 },
                 "value": {
                   "denom": "uallo",
@@ -413,7 +413,7 @@
                 }
               }
             ],
-            "memo": "d9b6446a911355eedf14c5a320f1f85d64ea4600@192.168.1.26:26656",
+            "memo": "59cdf1d6c72ea1955606f688527ff2de187efcef@192.168.1.23:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -423,7 +423,7 @@
               {
                 "public_key": {
                   "@type": "/cosmos.crypto.secp256k1.PubKey",
-                  "key": "AolVPmzn8D9BsBkzO7DFl5StS6z05cK6Rnt810IVJbve"
+                  "key": "A1t/U79auGHi41Hvp1qGK6CIfOI1VOfhYuiLUReVk8ff"
                 },
                 "mode_info": {
                   "single": {
@@ -442,7 +442,7 @@
             "tip": null
           },
           "signatures": [
-            "RqzTFc47UjhOKNrupRLAo3ndtbIFjj1k1U3yBeKG1r8WDhe3hTFB0WBvwLZuvj6oYdRLwAeJLYixIMVPbEAcYw=="
+            "cjiCq9jexNf3sGsM+lYygIl/T68nYPl2Lmf8CjtADWhyBd4uiIcXB3X09lQUlniOLv23wj35XK0EsT3QBH9Wjw=="
           ]
         }
       ]
