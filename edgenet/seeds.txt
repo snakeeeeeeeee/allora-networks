@@ -1,1 +1,1 @@
-3d3b82e78875b4607c2612b530e835dffde77824@seed-0.edgenet.allora.network:32030,7f47aec3539715a70853589bd7ef8d2fd7995122@seed-1.edgenet.allora.network:32031,f331a946a7bb06d1860b36bbb96345ee99fd737b@seed-2.edgenet.allora.network:32032
+3d3b82e78875b4607c2612b530e835dffde77824@seed-nginx-0.edgenet.allora.network:32036,7f47aec3539715a70853589bd7ef8d2fd7995122@seed-nginx-1.edgenet.allora.network:32037,f331a946a7bb06d1860b36bbb96345ee99fd737b@seed-nginx-2.edgenet.allora.network:32038

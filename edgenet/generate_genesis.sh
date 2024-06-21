@@ -11,9 +11,9 @@ FAUCET_WALLET_NAME="faucet"
 FAUCET_WALLET_TOKENS=$(echo '10^18' | bc) # 1 allo
 # These numbers should match the Token distribution schedule described in the whitepaper
 FOUNDATION_WALLET_NAME="foundation"
-FOUNDATION_WALLET_TOKENS=$(echo '10^26' | bc) # 10% of total token supply of 1e27 (1 Billion Allo)
+FOUNDATION_WALLET_TOKENS=$(echo '10^26' | bc) # 10% of total token supply of 1e27 (1 Billion Allo) = 100M allo
 INVESTORS_WALLET_NAME="investors"
-INVESTORS_WALLET_TOKENS=$(echo '3.105*10^26' | bc | cut -f 1 -d '.') # 31.05% of total token supply of 1e27
+INVESTORS_WALLET_TOKENS=$(echo '3.105*10^26' | bc | cut -f 1 -d '.') # 31.05% of total token supply of 1e27 = 310.5M allo
 TEAM_WALLET_NAME="team"
 TEAM_WALLET_TOKENS=$(echo '1.75*10^26' | bc | cut -f 1 -d '.') # 17.5% of total token supply of 1e27
 
