@@ -1,1 +1,1 @@
-/dns4/head-0.head.testnet-heads/tcp/9010/p2p/12D3KooWGAA1C2UNyj51QaGX5aXnVzRqeaqhyhUFFJixdqshwWC3
+/dns4/head-0.testnet.allora.network/tcp/9010/p2p/12D3KooWGAA1C2UNyj51QaGX5aXnVzRqeaqhyhUFFJixdqshwWC3,/dns4/head-1.testnet.allora.network/tcp/9010/p2p/12D3KooW9sHdPGzeKCHk6croZhZfG5VjQvL3aTsnvxybkQfKKNq9
