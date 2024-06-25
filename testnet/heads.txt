@@ -1,1 +1,1 @@
-/dns4/head-0-p2p.testnet.allora.network/tcp/32090/p2p/12D3KooWGAA1C2UNyj51QaGX5aXnVzRqeaqhyhUFFJixdqshwWC3,/dns4/head-1-p2p.testnet.allora.network/tcp/32091/p2p/12D3KooW9sHdPGzeKCHk6croZhZfG5VjQvL3aTsnvxybkQfKKNq9
+/dns4/head-0-p2p.testnet.allora.network/tcp/32090/p2p/12D3KooWGAA1C2UNyj51QaGX5aXnVzRqeaqhyhUFFJixdqshwWC3,/dns4/head-1-p2p.testnet.allora.network/tcp/32091/p2p/12D3KooW9sHdPGzeKCHk6croZhZfG5VjQvL3aTsnvxybkQfKKNq9,/dns4/head-2-p2p.testnet.allora.network/tcp/32092/p2p/12D3KooWDfXfD7TV7YnVu14fafcakjn74DLS6z4zTs4b1HSBWZ5i
