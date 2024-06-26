@@ -23,7 +23,7 @@ COMMON_HOME_DIR="${COMMON_HOME_DIR:-$(pwd)}"
 allorad=$(which allorad)
 keyringBackend=test
 
-valPreffix="validator"                      #! Used in save_keys_awssecretsmanager.sh
+valPreffix="validator"
 genesisHome="$COMMON_HOME_DIR/genesis"
 gentxDir=${genesisHome}/gentxs
 mkdir -p $gentxDir
