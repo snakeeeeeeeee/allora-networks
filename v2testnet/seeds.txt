@@ -1,1 +1,1 @@
-3d3b82e78875b4607c2612b530e835dffde77824@seed-0-p2p.v2.testnet.allora.network:32116,7f47aec3539715a70853589bd7ef8d2fd7995122@seed-1-p2p.v2.testnet.allora.network:32117,f331a946a7bb06d1860b36bbb96345ee99fd737b@seed-2-p2p.v2.testnet.allora.network:32118
+0c9a91333c31ccc6f983d5f12e164660831360c4@seed-0-p2p.v2.testnet.allora.network:32116,397022456be89afd5ed3c4b2204fec8311740283@seed-1-p2p.v2.testnet.allora.network:32117,a062d30cf9654c4a9679f5a4237bdefee4c0a9dd@seed-2-p2p.v2.testnet.allora.network:32118
