@@ -232,7 +232,6 @@
         "p_reward_reputer": "3",
         "c_reward_inference": "0.75",
         "c_reward_forecast": "0.75",
-        "f_tolerance": "0.01",
         "c_norm": "0.75",
         "topic_fee_revenue_decay_rate": "0.025"
       },
